@@ -20,7 +20,7 @@ export default {
         x.user == this.$route.params.userId ? commentList.push(x):'';
       });
       if (commentList.length == 0) {
-        location.href = '../';
+        location.href = './';
       }
       return commentList;
     }

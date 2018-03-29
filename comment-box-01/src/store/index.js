@@ -27,6 +27,7 @@ const getters = {
   commentListIsLike: state => {
     state.commentList.map(x => {
       x.isLike = x.like.includes(state.user);
+      x.time = new String(x.time); //保证时间区域每次都能刷新
     });
     return state.commentList;
   }
@@ -79,12 +80,13 @@ const mutations = {
     localStorage['user'] = state.user;
   },
   [types.COMMENT](state, content) {
-    const id = state.commentList.length > 0 ? parseInt(state.commentList[state.commentList.length - 1].id) + 1 : 1;
+    const time = new Date().getTime();
+    const id = time + Math.floor(Math.random() * 10);
     const comment = {
       id: id,
       user: state.user,
       content: content,
-      time: parseInt(new Date().getTime() / 1000),
+      time: parseInt(time / 1000),
       like: [],
       reply: 0,
     };
@@ -93,12 +95,14 @@ const mutations = {
     saveToCache('commentList', state.commentList);
   },
   [types.DELETE_COMMENT](state, id) {
+    let index = 0;
     state.commentList.map((x, i) => {
       if (x.id == id) {
-        state.commentList.splice(i, 1);
+        index = i;
         return;
       }
     });
+    state.commentList.splice(index, 1);
     saveToCache('commentList', state.commentList);
   },
   [types.LIKEORNOT](state, id) {

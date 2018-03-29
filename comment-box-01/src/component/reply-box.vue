@@ -28,7 +28,7 @@ export default {
         x.id == this.$route.params.commentId ? commentList.push(x) : '';
       });
       if (commentList.length == 0) {
-        location.href = '/';
+        location.href = './';
       }
       return commentList;
     },
@@ -36,6 +36,7 @@ export default {
       let replyList = [];
       this.$store.state.replyList.map(x => {
         x.commentId == this.$route.params.commentId ? replyList.push(x) : '';
+        x.time = new String(x.time); //保证时间区域每次都能刷新
       });
       return replyList;
     },
