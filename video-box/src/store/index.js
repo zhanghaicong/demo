@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
   headerData: {
     title: 'video-box',
-    badges: ['vue2', 'bootstrap4', 'axios'],
+    badges: ['vue2', 'bootstrap4', 'axios', 'nodejs', 'express'],
     links: [{
       title: 'demo',
       href: 'https://zhanghaicong.github.io/'

@@ -59,7 +59,7 @@ export default {
     },
     getPlayList: function() {
       let self = this;
-      axios.get('http://pl.hd.sohu.com/videolist?order=0&cnt=1&withLookPoint=1&preVideoRule=1&playlistid=' + this.listId).then(function(response) {
+      axios.get('http://140.143.232.19:8081/?id=' + this.listId).then(function(response) {
         console.log(response);
         self.videoList = response.data;
         self.showLoading = false;
