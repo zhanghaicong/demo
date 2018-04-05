@@ -4,19 +4,22 @@
     <strong>{{tip}}</strong>
   </div>
   <div id="info">
-    <div class="left col-4 col-sm-2">
+    <div class="left col-0 col-md-2">
       <img :src="videoList.smallVerPicUrl" />
     </div>
-    <div class="right col-8 col-sm-10">
-      <p>{{videoList.albumName}}</p>
-      <p>{{videoList.albumDesc}}</p>
+    <div class="right col-12 col-md-10">
+      <p id="albumName" class="font-weight-bold">{{videoList.albumName}} {{videoList.tvEnglishName}}</p>
+      <p id="categories">
+        <span v-for="category in videoList.categories" class="badge badge-pill badge-info">{{category}}</span>
+      </p>
+      <p id="albumDesc"><small>{{videoList.albumDesc}}</small></p>
     </div>
   </div>
   <div id="list">
     <span v-show="!showLoading">
-        <button type="button" class="btn btn-sm btn-default" @click="backToHome()">back</button>
-        <button v-for="video in videoList.videos" type="button" class="btn btn-sm btn-default" :class="{'btn-primary':video.vid==playId}" @click="play(video.vid)" :title="video.videoDesc">{{video.order}}</button>
+        <router-link to="/"><button type="button" class="btn btn-sm btn-default">back</button></router-link>
         <button type="button" class="btn btn-sm btn-default"  @click="closePlay()">close</button>
+        <button v-for="video in videoList.videos" type="button" class="btn btn-sm btn-default" :class="{'btn-primary':video.vid==playId}" @click="play(video.vid)" :title="video.videoDesc">{{video.order}}</button>
   	</span>
   </div>
   <div id="play" v-html="playHtml"></div>
@@ -42,9 +45,6 @@ export default {
     this.getPlayList();
   },
   methods: {
-    backToHome() {
-      location.href = '../../';
-    },
     closePlay() {
       this.playId = '';
       this.playHtml = '';
@@ -91,6 +91,12 @@ export default {
 
 #list {
   clear: both;
+}
+#albumName{
+  font-size: 1.4rem;
+}
+#albumDesc{
+  font-size: 1rem;
 }
 
 #play {

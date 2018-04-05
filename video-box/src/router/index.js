@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import home from '../component/home.vue'
-import sohu from '../component/sohu.vue'
+import sohuInfo from '../component/sohu-info.vue'
 
 Vue.use(VueRouter);
 
@@ -12,7 +12,7 @@ const routes = [{
 }, {
   name: 'sohu',
   path: '/:type/:id',
-  component: sohu
+  component: sohuInfo
 }, ];
 
 const router = new VueRouter({
