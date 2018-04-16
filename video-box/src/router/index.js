@@ -13,7 +13,7 @@ const routes = [{
   name: 'sohu',
   path: '/:type/:id',
   component: sohuInfo
-}, ];
+}];
 
 const router = new VueRouter({
   routes
