@@ -1,35 +1,25 @@
  import Vue from 'vue'
  import Vuex from 'vuex'
  import axios from 'axios';
- import util from '../util/util';
+ import {
+   siteInfo
+ } from '../util/i18n';
+ import {
+   sortBy
+ } from '../util/util';
 
  Vue.use(Vuex)
 
  const state = {
-   headerData: {
-     title: 'video-box',
-     badges: ['vue2', 'bootstrap4', 'axios', 'nodejs', 'express'],
-     links: [{
-       title: 'demo',
-       href: 'https://zhanghaicong.github.io/'
-     }, {
-       title: 'github',
-       href: 'https://github.com/zhanghaicong/demo/tree/master/video-box'
-     }]
-   },
+   headerData: siteInfo,
    isShowImg: true,
    filterStr: '',
-   videoList: {
-     sohuList: {
-       type: 'sohu',
-       list: []
-     }
-   }
+   sohuList: []
  }
 
  axios.get('/sohuList.json').then(function(response) {
-   state.videoList.sohuList.list = response.data.list;
-   state.videoList.sohuList.list.sort(util.sortBy('name'));
+   response.data.list.sort(sortBy('name'));
+   state.sohuList = response.data.list;
    console.log(response.data);
  }).catch(function(err) {
    console.log('sohuList error' + err);

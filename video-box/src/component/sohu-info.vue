@@ -28,16 +28,18 @@
 
 <script>
 import axios from 'axios';
-import i18n from '../util/i18n';
+import {
+  tip
+} from '../util/i18n';
 
 export default {
   data() {
     return {
-      tip: i18n.i18n.getTip,
+      tip: tip.init,
       showLoading: true,
       videoList: {},
       listId: this.$route.params.id,
-      playId: localStorage['souPlayId' + this.listId],
+      playId: localStorage['souPlayId' + this.$route.params.id],
       playHtml: '',
     }
   },
@@ -63,7 +65,8 @@ export default {
         console.log(response);
         self.videoList = response.data;
         self.showLoading = false;
-        self.tip = i18n.i18n.explainTip;
+        self.tip = tip.finish;
+        document.title = self.videoList.albumName + ' ' + self.videoList.tvEnglishName;
       }).catch(function(err) {
         console.log('getPlayList error' + err);
       });
@@ -92,10 +95,12 @@ export default {
 #list {
   clear: both;
 }
-#albumName{
+
+#albumName {
   font-size: 1.4rem;
 }
-#albumDesc{
+
+#albumDesc {
   font-size: 1rem;
 }
 

@@ -18,6 +18,6 @@ function sortBy(filed, rev, primer) {
   }
 }
 
-export default {
+export {
   sortBy
-}
+};
