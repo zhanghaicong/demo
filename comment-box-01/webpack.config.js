@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: './src/main.js',
@@ -21,8 +22,8 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
-          }
-          // other vue-loader options go here
+          },
+          postcss: [require('autoprefixer')({ browsers: ['last 10 Chrome versions', 'last 5 Firefox versions', 'Safari >= 6', 'ie > 8'] })]
         }
       },
       {

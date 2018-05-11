@@ -1,28 +1,36 @@
 <template>
-<tr>
-  <img :src="getImg(comment.user)">
-  <td class="detail pull-left" width="auto">
-    <div>
-      <strong><router-link :to="{name:'user',params:{userId:comment.user}}">{{comment.user}}</router-link></strong>
-      <span class="time">{{getDateString(comment.time)}}</span>
-    </div>
-    <div class="content">{{comment.content}}</div>
-    <div class="operate">
-      <span class="cursor-pointer" v-bind:class="{'is-like':comment.isLike}" @click="likeOrNot(comment.id)">赞 {{comment.like.length}}</span>
-      <router-link :to="{name:'comment',params:{commentId:comment.id}}">
-        <span class="cursor-pointer">回复 {{comment.reply}}</span>
+<div class="row">
+  <div class="avatar col-2 col-lg-1">
+    <router-link :to="{name:'user',params:{userId:comment.user}}">
+      <img :src="getImg(comment.user)" class="shake-slow" />
+    </router-link>
+  </div>
+  <div class="right col-10 col-lg-11">
+    <router-link :to="{name:'user',params:{userId:comment.user}}" class="user">{{comment.user}}</router-link>
+    <span class="time">{{getDateString(comment.time)}}</span>
+    <strong class="content">{{comment.content}}</strong>
+    <div class="icon">
+      <span class="like" :class="{liked:comment.isLike}" @click="likeOrNot(comment.id)">
+        <icon name="like" :scale="2"></icon>
+        {{comment.like.length}}
+      </span>
+      <router-link class="reply" :to="{name:'comment',params:{commentId:comment.id}}">
+        <icon name="reply" :scale="2"></icon>
+        {{comment.reply}}
       </router-link>
-      <span class="cursor-pointer" v-show="(this.$store.state.user==''&&comment.user=='小硫酸铜')||this.$store.state.user==comment.user" @click="deleteComment(comment.id)">删除</span>
+      <span class="delete" v-show="(this.$store.state.user==''&&comment.user=='小硫酸铜')||this.$store.state.user==comment.user" @click="deleteComment(comment.id)">
+        <icon name="delete" :scale="2"></icon>
+      </span>
     </div>
-  </td>
-</tr>
+  </div>
+</div>
 </template>
 
 <script>
 import util from '../util/util'
 
 export default {
-  props: ['comment'],
+  props: ['comment', 'icon'],
   methods: {
     likeOrNot(id) {
       this.$store.dispatch('likeOrNot', id);
@@ -40,52 +48,6 @@ export default {
 }
 </script>
 
-<style scope>
-img {
-  margin: 0px 10px;
-  width: 48px;
-}
-
-.is-like {
-  color: red;
-}
-
-.detail {
-  padding-right: 15px;
-  width: 100%;
-}
-
-.content {
-  margin-top: 3px;
-  line-height: 20px;
-  margin-bottom: 10px;
-}
-
-.time {
-  color: #777;
-  font-size: 85%;
-  float: right;
-}
-
-#btn-comment {
-  margin: 20px 0px;
-}
-
-#content-button {
-  margin-top: 20px;
-}
-
-#comment-num {
-  line-height: 33px;
-  margin-left: 10px;
-}
-
-.operate {
-  color: #777;
-  font-size: 85%;
-}
-
-.operate span {
-  margin-right: 5px;
-}
+<style scoped>
+@import '../css/comment.css';
 </style>

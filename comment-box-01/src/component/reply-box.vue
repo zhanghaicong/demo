@@ -1,11 +1,12 @@
 <template>
 <div>
   <router-link to="/">所有评论</router-link>
-  <textarea class="form-control" rows="3" placeholder="回复" v-model.trim="content" maxlength="100"></textarea>
-  <button type="button" class="btn btn-secondary" @click="reply">回复</button>
-  <input class="form-control" id="user" placeholder="小硫酸铜" maxlength="10" v-model.trim="user" @change="changeUser" />
   <commentList :commentList="commentList"></commentList>
-  <p style="margin-top:20px;">该评论的回复（{{replyList.length}}）</p>
+  <div style="margin-bottom:30px;">
+    <textarea class="form-control" rows="3" placeholder="回复" v-model.trim="content" maxlength="100"></textarea>
+    <button type="button" class="btn btn-secondary" @click="reply">回复</button>
+    <input class="form-control" id="user" placeholder="小硫酸铜" maxlength="10" v-model.trim="user" @change="changeUser" />
+  </div>
   <replyList :replyList="replyList"></replyList>
 </div>
 </template>

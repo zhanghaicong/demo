@@ -1,13 +1,6 @@
 <template>
 <div id="reply" class="col-xs-12" v-show="replyList.length>0" style="display:none;border-bottom:0px;">
-  <li v-for="reply in replyList">
-    <table class="tourist-table">
-      <tbody>
-        <replyDetail :reply="reply"></replyDetail>
-      </tbody>
-    </table>
-    <div class="line"></div>
-  </li>
+  <replyDetail v-for="reply in replyList" :reply="reply"></replyDetail>
 </div>
 </template>
 
@@ -21,23 +14,3 @@ export default {
   },
 }
 </script>
-
-<style scope>
-li {
-  list-style-type: none;
-}
-
-table {
-  margin: 10px 0px;
-}
-
-#reply {
-  border: 1px solid #e2e2e2;
-  background-color: white;
-  font-size: 90%;
-  border-radius: 5px;
-  margin: 0px;
-  margin-top: 20px;
-  padding: 0px;
-}
-</style>

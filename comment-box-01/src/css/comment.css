@@ -1,0 +1,82 @@
+
+.row{
+  margin-right: 0px;
+}
+
+.avatar {
+  float: left;
+}
+
+.avatar img {
+  border-radius: 5px;
+  width: 90%;
+}
+
+.right {
+  background: #e9ecef;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  color: #696A52;
+  float: right;
+  ;
+}
+
+.right:hover {
+  transition: all 0.5s;
+  box-shadow: 1px 4px 10px 2px #CCC;
+}
+
+.user{
+  color: black;
+  font-weight:bold;
+}
+
+.icon {
+  top: 10px;
+  font-size: 12px;
+}
+
+.icon svg {
+  position: relative;
+  top: 2px;
+}
+
+.like,
+.delete {
+  cursor: pointer;
+}
+
+.like svg {
+  top: 2px;
+}
+
+.liked {
+  color: #007bff;
+}
+
+.reply,
+.reply:hover {
+  top: 5px;
+  color: #696A52;
+}
+
+.reply svg {
+  top: 4px;
+  margin-left: 6px;
+  margin-right: 2px;
+}
+
+.delete svg {
+  margin-left: 5px;
+}
+
+.time {
+  float: right;
+  font-size: 12px;
+}
+
+.content {
+  display: block;
+  margin: 15px 0px;
+}

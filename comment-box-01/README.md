@@ -1,6 +1,6 @@
-# comment-box-01
+# comment-box
 
-> comment-box-01
+> comment-box
 
 ## Build Setup
 
