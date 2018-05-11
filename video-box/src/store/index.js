@@ -2,7 +2,7 @@
  import Vuex from 'vuex'
  import axios from 'axios';
  import {
-   siteInfo
+   headerData
  } from '../util/i18n';
  import {
    sortBy
@@ -11,7 +11,7 @@
  Vue.use(Vuex)
 
  const state = {
-   headerData: siteInfo,
+   headerData: headerData,
    isShowImg: true,
    filterStr: '',
    sohuList: []

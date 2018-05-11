@@ -5,7 +5,7 @@
   </div>
   <div id="info">
     <div class="left col-0 col-md-2">
-      <img :src="videoList.smallVerPicUrl" />
+      <img :src="videoList.smallVerPicUrl" class="shake-slow" />
     </div>
     <div class="right col-12 col-md-10">
       <p id="albumName" class="font-weight-bold">{{videoList.albumName}} {{videoList.tvEnglishName}}</p>
@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     closePlay() {
-      this.playId = '';
       this.playHtml = '';
     },
     play: function(playId) {
@@ -75,7 +74,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 #info .left {
   float: left;
 }
@@ -102,6 +101,10 @@ export default {
 
 #albumDesc {
   font-size: 1rem;
+}
+
+#categories span{
+  margin-right: 10px;
 }
 
 #play {

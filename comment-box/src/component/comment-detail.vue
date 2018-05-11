@@ -47,7 +47,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-@import '../css/comment.css';
-</style>

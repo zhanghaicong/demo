@@ -15,7 +15,7 @@ const state = {
       href: 'https://zhanghaicong.github.io/'
     }, {
       title: 'github',
-      href: 'https://github.com/zhanghaicong/demo/tree/master/todo-01'
+      href: 'https://github.com/zhanghaicong/demo/tree/master/todo'
     }]
   },
   todoList: localStorage['todo'] && JSON.parse(localStorage['todo']) instanceof Array ? JSON.parse(localStorage['todo']) : [],

@@ -1,11 +1,14 @@
-const siteInfo = {
+const headerData = {
   title: 'video-box',
   badges: ['vue2', 'bootstrap4', 'axios', 'nodejs', 'express'],
   links: [{
-    title: 'demo',
+    icon: 'home',
     href: 'https://zhanghaicong.github.io/'
   }, {
-    title: 'github',
+    icon: 'github',
+    href: 'https://github.com/zhanghaicong/'
+  }, {
+    icon: 'fork',
     href: 'https://github.com/zhanghaicong/demo/tree/master/video-box'
   }]
 };
@@ -16,6 +19,6 @@ const tip = {
 };
 
 export {
-  siteInfo,
+  headerData,
   tip
 };

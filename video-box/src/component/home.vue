@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 #nav-tabContent {
   margin-top: 1rem;
 }

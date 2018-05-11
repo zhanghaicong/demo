@@ -5,7 +5,7 @@ import router from './router';
 import App from './App.vue'
 
 import './css/common.css'
-import './css/csshake.css'
+import './css/comment.css';
 
 import Icon from 'vue-svg-icon/Icon.vue';
 Vue.component('icon', Icon);

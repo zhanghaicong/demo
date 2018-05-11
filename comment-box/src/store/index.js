@@ -17,7 +17,7 @@ const state = {
       href: 'https://github.com/zhanghaicong/'
     }, {
       icon: 'fork',
-      href: 'https://github.com/zhanghaicong/demo/tree/master/comment-box-01'
+      href: 'https://github.com/zhanghaicong/demo/tree/master/comment-box'
     }]
   },
   user: (localStorage['user'] == '' || localStorage['user'] == undefined) ? '小硫酸铜' : localStorage['user'],

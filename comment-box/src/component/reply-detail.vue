@@ -2,7 +2,7 @@
 <div class="row">
   <div class="avatar col-2 col-lg-1">
     <router-link :to="{name:'user',params:{userId:reply.user}}">
-      <img :src="getImg(reply.user)" />
+      <img :src="getImg(reply.user)" class="shake-slow" />
     </router-link>
   </div>
   <div class="right col-10 col-lg-11">
@@ -11,7 +11,7 @@
     <strong class="content">{{reply.content}}</strong>
     <div class="icon">
       <span class="delete" v-show="(this.$store.state.user==''&&reply.user=='小硫酸铜')||this.$store.state.user==reply.user" @click="deleteReply(reply.id)">
-        <icon name="delete" :scale="2" class="shake-slow"></icon>
+        <icon name="delete" :scale="2"></icon>
       </span>
     </div>
   </div>

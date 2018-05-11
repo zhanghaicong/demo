@@ -1,6 +1,6 @@
-# todo-01
+# todo
 
-> todo-01
+> todo
 
 ## Build Setup
 
