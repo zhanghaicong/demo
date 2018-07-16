@@ -4,6 +4,9 @@ import * as types from './mutation-types'
 import {
   headerData
 } from '../util/i18n';
+import {
+  getUUID
+} from '../util/util';
 
 Vue.use(Vuex)
 
@@ -72,13 +75,12 @@ const mutations = {
     localStorage['user'] = state.user;
   },
   [types.COMMENT](state, content) {
-    const time = new Date().getTime();
-    const id = time + Math.floor(Math.random() * 10);
+    const id = 'c' + getUUID();
     const comment = {
       id: id,
       user: state.user,
       content: content,
-      time: parseInt(time / 1000),
+      time: parseInt(new Date().getTime() / 1000),
       like: [],
       reply: 0,
     };
@@ -111,7 +113,7 @@ const mutations = {
     commentId,
     content
   }) {
-    const id = state.replyList.length > 0 ? parseInt(state.replyList[state.replyList.length - 1].id) + 1 : 1;
+    const id = 'r' + getUUID();
     const reply = {
       id: id,
       user: state.user,

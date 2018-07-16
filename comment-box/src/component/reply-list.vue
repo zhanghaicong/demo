@@ -8,9 +8,21 @@
 import replyDetail from './reply-detail.vue'
 
 export default {
-  props: ['replyList'],
+  props: ['commentId'],
   components: {
     replyDetail,
+  },
+  computed: {
+    replyList() {
+      let replyList = [];
+      this.$store.state.replyList.map(x => {
+        if (x.commentId == this.commentId) {
+          x.time = new String(x.time); //保证时间区域每次都能刷新
+          replyList.push(x);
+        }
+      });
+      return replyList;
+    },
   },
 }
 </script>

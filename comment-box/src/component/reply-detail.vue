@@ -19,7 +19,10 @@
 </template>
 
 <script>
-import util from '../util/util'
+import {
+  getDateString,
+  getImg
+} from '../util/util'
 
 export default {
   props: ['reply'],
@@ -28,10 +31,10 @@ export default {
       this.$store.dispatch('deleteReply', id);
     },
     getDateString(time) {
-      return util.getDateString(time);
+      return getDateString(time);
     },
     getImg(string) {
-      return util.getImg(string);
+      return getImg(string);
     }
   }
 }

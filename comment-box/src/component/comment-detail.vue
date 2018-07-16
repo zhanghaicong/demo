@@ -10,14 +10,14 @@
     <span class="time">{{getDateString(comment.time)}}</span>
     <strong class="content">{{comment.content}}</strong>
     <div class="icon">
-      <span class="like" :class="{liked:comment.isLike}" @click="likeOrNot(comment.id)">
-        <icon name="like" :scale="2"></icon>
-        <span class="like-num">{{comment.like.length}}</span>
-      </span>
       <router-link class="reply" :to="{name:'comment',params:{commentId:comment.id}}">
         <icon name="reply" :scale="2"></icon>
         <span class="reply-num">{{comment.reply}}</span>
       </router-link>
+      <span class="like" :class="{liked:comment.isLike}" @click="likeOrNot(comment.id)">
+          <icon name="like" :scale="2"></icon>
+          <span class="like-num">{{comment.like.length}}</span>
+      </span>
       <span class="delete" v-show="(this.$store.state.user==''&&comment.user=='小硫酸铜')||this.$store.state.user==comment.user" @click="deleteComment(comment.id)">
         <icon name="delete" :scale="2"></icon>
       </span>
@@ -27,10 +27,13 @@
 </template>
 
 <script>
-import util from '../util/util'
+import {
+  getDateString,
+  getImg
+} from '../util/util'
 
 export default {
-  props: ['comment', 'icon'],
+  props: ['comment'],
   methods: {
     likeOrNot(id) {
       this.$store.dispatch('likeOrNot', id);
@@ -39,10 +42,10 @@ export default {
       this.$store.dispatch('deleteComment', id);
     },
     getDateString(time) {
-      return util.getDateString(time);
+      return getDateString(time);
     },
     getImg(string) {
-      return util.getImg(string);
+      return getImg(string);
     }
   }
 }

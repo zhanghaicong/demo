@@ -8,9 +8,13 @@
 import commentDetail from './comment-detail.vue'
 
 export default {
-  props: ['commentList'],
   components: {
     commentDetail,
+  },
+  computed: {
+    commentList() {
+      return this.$store.getters.commentListIsLike;
+    },
   },
 }
 </script>
