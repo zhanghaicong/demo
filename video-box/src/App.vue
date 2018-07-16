@@ -2,7 +2,7 @@
 <div class="container">
   <myHeader></myHeader>
   <router-view></router-view>
-  <p style="text-align:center;font-size:10px;margin-top:30px;">© 2018 <a href="https://github.com/zhanghaicong/" target="_blank">zhanghaicong</a></p>
+  <p class="copyright">© 2018 <a href="https://github.com/zhanghaicong/" target="_blank">zhanghaicong</a></p>
 </div>
 </template>
 
@@ -17,17 +17,27 @@ export default {
 </script>
 
 <style>
+.copyright {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 30px;
+}
+
 .line {
   border-bottom: 1px solid #e2e2e2;
   width: 100%;
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
-button{
+
+button {
   cursor: pointer;
 }
-button,textarea{
+
+button,
+textarea {
   margin-top: 10px;
 }
 

@@ -1,7 +1,7 @@
 <template>
 <div>
-  <router-link to="/">所有评论</router-link>
-  <p>{{$route.params.userId}}的评论（{{commentList.length}}）</p>
+  <router-link to="/">all comments</router-link>
+  <p>comments of {{$route.params.userId}}</p>
   <commentList :commentList="commentList"></commentList>
 </div>
 </template>

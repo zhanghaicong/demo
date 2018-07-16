@@ -1,26 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as types from './mutation-types'
+import {
+  headerData
+} from '../util/i18n';
 
 Vue.use(Vuex)
 
-// initial state
 const state = {
-  headerData: {
-    title: 'comment-box',
-    badges: ['vue2', 'bootstrap4', '纯前台缓存数据'],
-    links: [{
-      icon: 'home',
-      href: 'https://zhanghaicong.github.io/'
-    }, {
-      icon: 'github',
-      href: 'https://github.com/zhanghaicong/'
-    }, {
-      icon: 'fork',
-      href: 'https://github.com/zhanghaicong/demo/tree/master/comment-box'
-    }]
-  },
-  user: (localStorage['user'] == '' || localStorage['user'] == undefined) ? '小硫酸铜' : localStorage['user'],
+  headerData: headerData,
+  user: (localStorage['user'] == '' || localStorage['user'] == undefined) ? 'zhanghaicong' : localStorage['user'],
   commentList: (localStorage['commentList'] && JSON.parse(localStorage['commentList']) instanceof Array) ? JSON.parse(localStorage['commentList']) : [],
   replyList: (localStorage['replyList'] && JSON.parse(localStorage['replyList']) instanceof Array) ? JSON.parse(localStorage['replyList']) : [],
 }
@@ -79,7 +68,7 @@ const actions = {
 // mutations
 const mutations = {
   [types.CHANGE_USER](state, user) {
-    state.user = user == '' ? '小硫酸铜' : user;
+    state.user = user == '' ? 'zhanghaicong' : user;
     localStorage['user'] = state.user;
   },
   [types.COMMENT](state, content) {

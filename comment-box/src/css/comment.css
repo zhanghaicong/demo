@@ -63,12 +63,15 @@
 
 .reply svg {
   top: 4px;
-  margin-left: 6px;
   margin-right: 2px;
 }
 
-.delete svg {
-  margin-left: 5px;
+.like-num{
+  margin-right: 5px;
+}
+
+.reply-num{
+  margin-right: 5px;
 }
 
 .time {

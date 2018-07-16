@@ -3,17 +3,17 @@ import md5 from 'js-md5'
 const getDateString = function(time) {
   var time = Date.parse(new Date()) / 1000 - time;
   if (time > 30 * 24 * 3600) {
-    return parseInt(time / (30 * 24 * 3600)) + '月前';
+    return parseInt(time / (30 * 24 * 3600)) + ' months ago';
   } else if (time > 24 * 3600) {
-    return parseInt(time / (24 * 3600)) + '天前';
+    return parseInt(time / (24 * 3600)) + ' days ago';
   } else if (time > 3600) {
-    return parseInt(time / 3600) + '小时前';
+    return parseInt(time / 3600) + ' hours ago';
   } else if (time > 60) {
-    return parseInt(time / 60) + '分钟前';
+    return parseInt(time / 60) + ' minutes ago';
   } else if (time > 0) {
-    return parseInt(time) + '秒前';
+    return parseInt(time) + ' seconds ago';
   } else {
-    return '刚刚';
+    return 'now';
   }
 }
 

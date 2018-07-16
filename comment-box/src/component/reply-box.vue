@@ -1,11 +1,12 @@
 <template>
 <div>
-  <router-link to="/">所有评论</router-link>
+  <router-link to="/">all comments</router-link>
+  <p>replies of comment</p>
   <commentList :commentList="commentList"></commentList>
   <div style="margin-bottom:30px;">
-    <textarea class="form-control" rows="3" placeholder="回复" v-model.trim="content" maxlength="100"></textarea>
-    <button type="button" class="btn btn-secondary" @click="reply">回复</button>
-    <input class="form-control" id="user" placeholder="小硫酸铜" maxlength="10" v-model.trim="user" @change="changeUser" />
+    <textarea class="form-control" rows="3" placeholder="reply" v-model.trim="content" maxlength="100"></textarea>
+    <button type="button" class="btn btn-secondary" @click="reply">reply</button>
+    <input class="form-control" id="user" placeholder="zhanghaicong" maxlength="10" v-model.trim="user" @change="changeUser" />
   </div>
   <replyList :replyList="replyList"></replyList>
 </div>
@@ -18,7 +19,7 @@ import replyList from './reply-list.vue'
 export default {
   data() {
     return {
-      content: '回复',
+      content: 'reply',
       user: this.$store.state.user,
     }
   },
@@ -51,14 +52,19 @@ export default {
       this.$store.dispatch('changeUser', this.user);
     },
     reply() {
-      if (this.content != '') {
-        this.$store.dispatch('reply', {
-          commentId: this.$route.params.commentId,
-          content: this.content
-        });
-        this.content = '回复';
+      if (this.content == '') {
+        this.content = 'reply';
       }
+      this.$store.dispatch('reply', {
+        commentId: this.$route.params.commentId,
+        content: this.content
+      });
     }
   }
 }
 </script>
+<style scoped>
+p {
+  margin-top: 20px;
+}
+</style>

@@ -12,11 +12,11 @@
     <div class="icon">
       <span class="like" :class="{liked:comment.isLike}" @click="likeOrNot(comment.id)">
         <icon name="like" :scale="2"></icon>
-        {{comment.like.length}}
+        <span class="like-num">{{comment.like.length}}</span>
       </span>
       <router-link class="reply" :to="{name:'comment',params:{commentId:comment.id}}">
         <icon name="reply" :scale="2"></icon>
-        {{comment.reply}}
+        <span class="reply-num">{{comment.reply}}</span>
       </router-link>
       <span class="delete" v-show="(this.$store.state.user==''&&comment.user=='小硫酸铜')||this.$store.state.user==comment.user" @click="deleteComment(comment.id)">
         <icon name="delete" :scale="2"></icon>
