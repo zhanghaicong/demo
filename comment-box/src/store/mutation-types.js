@@ -1,3 +1,4 @@
+export const CHANGE_SORTBY = 'CHANGE_SORTBY'
 export const CHANGE_USER = 'CHANGE_USER'
 export const COMMENT = 'COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'

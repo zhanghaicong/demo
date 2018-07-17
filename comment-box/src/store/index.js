@@ -11,6 +11,7 @@ import {
 Vue.use(Vuex)
 
 const state = {
+  sortBy: "Time",
   headerData: headerData,
   user: (localStorage['user'] == '' || localStorage['user'] == undefined) ? 'zhanghaicong' : localStorage['user'],
   commentList: (localStorage['commentList'] && JSON.parse(localStorage['commentList']) instanceof Array) ? JSON.parse(localStorage['commentList']) : [],
@@ -24,12 +25,27 @@ const getters = {
       x.isLike = x.like.includes(state.user);
       x.time = new String(x.time); //保证时间区域每次都能刷新
     });
+    switch (state.sortBy) {
+      case "Reply":
+        state.commentList.sort((a, b) => b.reply - a.reply);
+        break;
+      case "Like":
+        state.commentList.sort((a, b) => b.like.length - a.like.length);
+        break;
+      default:
+        state.commentList.sort((a, b) => a.time - b.time);
+    }
     return state.commentList;
   }
 }
 
 // actions
 const actions = {
+  changeSortBy({
+    commit
+  }, sortBy) {
+    commit(types.CHANGE_SORTBY, sortBy);
+  },
   changeUser({
     commit
   }, user) {
@@ -70,6 +86,9 @@ const actions = {
 
 // mutations
 const mutations = {
+  [types.CHANGE_SORTBY](state, sortBy) {
+    state.sortBy = sortBy;
+  },
   [types.CHANGE_USER](state, user) {
     state.user = user == '' ? 'zhanghaicong' : user;
     localStorage['user'] = state.user;
