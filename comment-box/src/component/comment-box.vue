@@ -4,7 +4,7 @@
   <textarea class="form-control" rows="3" placeholder="comment" v-model.trim="content" maxlength="100"></textarea>
   <button type="button" class="btn btn-secondary" @click="comment">comment</button>
   <input class="form-control" id="user" placeholder="zhanghaicong" maxlength="20" v-model.trim="user" />
-  <commentList></commentList>
+  <commentList :commentList="this.$store.getters.commentListIsLike"></commentList>
 </div>
 </template>
 

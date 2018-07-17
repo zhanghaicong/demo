@@ -15,10 +15,7 @@ export default {
   },
   computed: {
     commentList() {
-      let commentList = [];
-      this.$store.getters.commentListIsLike.map(x => {
-        x.user == this.$route.params.userId ? commentList.push(x):'';
-      });
+      const commentList = this.$store.getters.commentListIsLike.filter(x => x.user == this.$route.params.userId);
       if (commentList.length == 0) {
         location.href = './';
       }

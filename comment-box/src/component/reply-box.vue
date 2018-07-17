@@ -28,18 +28,12 @@ export default {
   },
   computed: {
     comment() {
-      let comment = null;
       for (let x of this.$store.getters.commentListIsLike) {
         if (x.id == this.$route.params.commentId) {
-          comment = x;
-          break;
+          return x;
         }
       };
-      if (!comment) {
-        location.href = './';
-      } else {
-        return comment;
-      }
+      location.href = './';
     },
     user: {
       get() {
